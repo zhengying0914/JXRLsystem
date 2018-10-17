@@ -1,0 +1,9 @@
+body{
+	width: auto;
+	height: auto;
+	background-image:url(../img/registbg.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	}

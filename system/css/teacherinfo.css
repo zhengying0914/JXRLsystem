@@ -1,0 +1,9 @@
+body{
+	width: auto;
+	height: auto;
+	background-image:url(../img/teacherInfobg.jpg);
+	background-size: 50% 50%;
+	background-repeat: repeat;
+	background-attachment: fixed;
+	background-position: center;
+	}

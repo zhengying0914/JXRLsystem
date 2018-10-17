@@ -1,0 +1,9 @@
+body{
+	width: auto;
+	height: auto;
+	background-image:url(../img/classinfobg.jpg);
+	background-size: 100% 150%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	}
