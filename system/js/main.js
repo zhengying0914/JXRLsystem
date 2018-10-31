@@ -18,6 +18,7 @@ var lunarInfo=new Array(//阴历数据
 var solar_month=new Array(31,28,31,30,31,30,31,31,30,31,30,31);
 var day_gan=new Array("甲","乙","丙","丁","戊","己","庚","辛","壬","癸");
 var day_zhi=new Array("子","丑","寅","卯","辰","巳","午","未","申","酉","戌","亥");
+var Animals=new Array("鼠","牛","虎","兔","龙","蛇","马","羊","猴","鸡","狗","猪");
 var solar_term = new Array("小寒","大寒","立春","雨水","惊蛰","春分","清明","谷雨","立夏","小满","芒种","夏至","小暑","大暑","立秋","处暑","白露","秋分","寒露","霜降","立冬","小雪","大雪","冬至")
 //计算某年的第n个节气公历日期所需要的基础数据（类似于每月的多少天）
 var sterm_info = new Array(0,21208,42467,63836,85337,107014,128867,150921,173149,195551,218072,240693,263343,285989,308563,331033,353350,375494,397447,419210,440795,462224,483532,504758)
@@ -566,7 +567,7 @@ function addDay(v) {
          
          day_detal= 
                   '<table class="detallu"><tr><td>' +'<table><tr><td><span>'+ cld[d].sy+'-'+cld[d].s_m+'-'+cld[d].s_d+' 星期'+cld[d].week+'<br>'+
-                  '<p style="font-family:courier;font-size: 54px;margin-bottom: 52%;">'+"课表"+'</p>'+//margin-right: -215%;
+                  '<p style="font-family:courier;font-size: 20px;margin-bottom: 52%;">'+"欢迎XX同学"+'</p>'+//margin-right: -215%;
                   //'<span style=" float: right;margin-top: -86%;font-size: 13px;">'+ fes +'农历'+(cld[d].isLeap?'闰 ':' ')+cld[d].l_m+' 月 '+cld[d].l_d+' 日</span><br>'+
                   //'<span style="float: right;margin-top: -71%;font-size: 13px;">'+cld[d].c_y+'年 '+cld[d].c_m+'月 '+cld[d].cal_d + '日</span>'
                   '</td></tr></table>';
