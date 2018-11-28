@@ -4,132 +4,59 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>欢迎进入教务日历系统</title>
-
-		<link rel="stylesheet" type="text/css" href="css/student1.css">
-		<script type="text/javascript" src="js/main.js"></script>
+		<link rel="stylesheet" href="css/classTable.css" />
+		<script type="text/javascript" src="js/Timetables.min.js" ></script>
 
 	</head>
 
-	<body onload=initial();>
-		
-		<h1>欢迎进入教务日历系统</h1>
-		<div id="content" >
-			<!-- 显示日期详情 -->
-			<div id="detail">
-				<div id="date_content"></div>
-				<div id="animal_year"></div>
-				<!-- 显示时钟 -->
-				<p id="clock"></p>
-			</div>
-			<form name="calender_content" style="margin-top: -15px;">
-				<table class="week">
-					<tbody>
-						<tr>
-							<td class="ch">
-								<!-- 日历头部 -->
-								<table>
-									<tbody>
-										<tr class="day">
-											<td>日</td>
-											<td>一</td>
-											<td>二</td>
-											<td>三</td>
-											<td>四</td>
-											<td>五</td>
-											<td>六</td>
-										</tr>
-									</tbody>
-								</table>
-						</tr>
-						</td>
-						<!-- 头部END -->
+<body onload=initial();>
+<div id="coursesTable" style="width: 65%; height: 180px;float: right;"></div>
+<script>
+  var courseList = [
+    ['', '', '基于开放平台的应用开发@下沙A314', '基于开放平台的应用开发@下沙A314', '基于开放平台的应用开发@下沙A314', '', '', '', '', '', '', ''],
+    ['', '', '软件项目管理@下沙A317', '软件项目管理@下沙A317', '软件项目管理@下沙A317', '', '', '', '', '概率论与数理统计@下沙B231', '概率论与数理统计@下沙B231', '概率论与数理统计@下沙B231'],
+    ['', '', '', '', '', '', '', '', '', '', '', ''],
+    ['软件工程实践@下沙 信息楼', '软件工程实践@下沙 信息楼', '软件工程实践@下沙 信息楼', '软件工程实践@下沙 信息楼', '', '探索与发现：生命@下沙 经济224', '探索与发现：生命@下沙 经济224', '探索与发现：生命@下沙 经济224', '', '法医学@下沙B321', '法医学@下沙B321', '法医学@下沙B321'],
+    ['', '', '工程源代码阅读与分析@下沙 信息楼', '工程源代码阅读与分析@下沙 信息楼', '工程源代码阅读与分析@下沙 信息楼', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', '', '', '', ''],
+  ];
+  var week = window.innerWidth > 360 ? ['周一', '周二', '周三', '周四', '周五','周六','周日'] :
+    ['一', '二', '三', '四', '五','六','七'];
+  var day = new Date().getDay();
+  var courseType = [
+    [{index: '1', name: '08:05'}, 1],
+    [{index: '2', name: '08:50'}, 1],
+    [{index: '3', name: '09:50'}, 1],
+    [{index: '4', name: '10:40'}, 1],
+    [{index: '5', name: '11:30'}, 1],
+    [{index: '6', name: '13:40'}, 1],
+    [{index: '7', name: '14:35'}, 1],
+    [{index: '8', name: '15:30'}, 1],
+    [{index: '9', name: '17:00'}, 1],
+    [{index: '10', name: '18:30'}, 1],
+    [{index: '11', name: '19:25'}, 1],
+    [{index: '12', name: '20:20'}, 1]
+  ];
+  // 实例化(初始化课表)
+  var Timetable = new Timetables({
+    el: '#coursesTable',
+    timetables: courseList,
+    week: week,
+    timetableType: courseType,
+    highlightWeek: day,
+    gridOnClick: function (e) {
+      alert(e.name + '\n任课老师：XXX\n' + e.week + '\n第' + e.index + '节课\n课长' + e.length + '节\n备注信息：');
+      con=confirm("是否查看或下载相关课件"); 
+		if(con==true)open("login.html");
+      console.log(e);
+    },
+    styles: {
+      Gheight: 50
+    }
+  });
 
-						<!-- js动态的向表格写入日期 -->
-						<script>
-							var Num; //Num计算出日期位置
-							for(i = 0; i < 6; i++) {
-
-								document.write('<table id="cal-content"><tr>');
-
-								for(j = 0; j < 7; j++) {
-									Num = i * 7 + j;
-									document.write('<td id="SD' + Num + '" onclick="addDay(' + Num + ')" ');
-									//周六 周日 假期样式设定
-									if(j == 0 || j == 6) {
-										document.write(' class="aorange"');
-									} else {
-										document.write(' class="one"');
-									}
-									document.write('title=""> </td>')
-								}
-
-								document.write('</tr></table></td></tr><tr><td><table style="width:399;"><tr style="text-align:left"> ');
-								//农历
-								for(j = 0; j < 7; j++) {
-									Num = i * 7 + j;
-									document.write('<td id="LD' + Num + '" onclick="addDay(' + Num + ')" class="bs" title=""> </td>')
-
-								}
-								document.write('</tr></table></td></tr>');
-
-							}
-						</script>
-						<!-- 生成日期 END    -->
-						</tr>
-				</table>
-				</td>
-				</tr>
-				</tbody>
-				</table>
-				<table>
-					<tbody>
-						<tr>
-							<td class="sm">
-								<table class="table_head">
-									<tbody>
-										<tr>
-											<td>
-												<!-- 选择年份菜单 -->
-												<div class="year_select">
-													<span onClick="BtN('year_d')"><img src="img/left.png"></span>
-													<select onChange="chaCld()" name="SY">
-														<script>
-															for(i = 1900; i < 2050; i++)
-																document.write('<option>' + i + "年")
-														</script>
-													</select>
-													<span onClick="BtN('year_a')"><img src="img/right.png"></span>
-												</div>
-												<!-- 回到当天菜单 -->
-												<div class="home_select">
-													<span onClick="BtN('')"><img src="img/2.png" style="width:26px;height:26px"></span>
-												</div>
-
-												<!-- 选择月份菜单 -->
-												<div style="display:inline-block;">
-													<span onClick="BtN('month_d')"><img src="img/left.png"></span>
-													<select onChange="chaCld()" name="SM">
-														<script>
-															for(i = 1; i < 13; i++) document.write('<option>' + i + "月")
-														</script>
-													</select>
-													<span onClick="BtN('month_a')"><img src="img/right.png"></span>
-												</div>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</form>
-		</div>
-
-		<div style="text-align:center;clear:both;">
-			<script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
-			<script src="/follow.js" type="text/javascript"></script>
-		</div>
+</script>
 
 	</body>
 

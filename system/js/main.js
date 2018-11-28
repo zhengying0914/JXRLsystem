@@ -213,7 +213,7 @@ function Lunar(objDate) {
    if(offset<0){ offset += temp; --i; --this.monCyl; }
 
    this.month = i
-   this.day = offset + 1
+   this.day = Math.trunc(offset + 1)
 }
 
 function solar_day(y,m) {
@@ -567,7 +567,7 @@ function addDay(v) {
          
          day_detal= 
                   '<table class="detallu"><tr><td>' +'<table><tr><td><span>'+ cld[d].sy+'-'+cld[d].s_m+'-'+cld[d].s_d+' 星期'+cld[d].week+'<br>'+
-                  '<p style="font-family:courier;font-size: 20px;margin-bottom: 52%;">'+"欢迎XX同学"+'</p>'+//margin-right: -215%;
+                  '<p style="font-family:courier;font-size: 20px;margin-bottom: 52%;">'+"欢迎XX"+'</p>'+//margin-right: -215%;
                   //'<span style=" float: right;margin-top: -86%;font-size: 13px;">'+ fes +'农历'+(cld[d].isLeap?'闰 ':' ')+cld[d].l_m+' 月 '+cld[d].l_d+' 日</span><br>'+
                   //'<span style="float: right;margin-top: -71%;font-size: 13px;">'+cld[d].c_y+'年 '+cld[d].c_m+'月 '+cld[d].cal_d + '日</span>'
                   '</td></tr></table>';
